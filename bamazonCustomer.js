@@ -3,7 +3,7 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host:"localhost",
-
+    database:"bamazon_db",
     port:3306,
     user:"root",
     password: "12345678"
@@ -42,7 +42,7 @@ function userPrompt(){
         var item = input.item_id;
         var quantity = input.quantity;
 
-        var queryStr = "SELECT * FROM bam_products WHERE ?";
+        var queryStr = "SELECT * FROM products WHERE ?";
 
         connection.query(queryStr, {item_id: item}, function(err, data) {
             if(err) throw err;
@@ -103,4 +103,4 @@ function runStore() {
     displayInventory();
 }
 
-runStore()
+runStore();
